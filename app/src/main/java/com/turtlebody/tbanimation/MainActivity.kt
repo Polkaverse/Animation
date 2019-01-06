@@ -2,7 +2,6 @@ package com.turtlebody.tbanimation
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.turtlebody.tbanimation.ui.components.anim1.Anim1Activity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
