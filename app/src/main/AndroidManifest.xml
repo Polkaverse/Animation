@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".ui.components.anim1.Anim1Activity">
         </activity>
+        <activity android:name=".ui.components.anim2.Anim2Activity">
+        </activity>
     </application>
 
 </manifest>
