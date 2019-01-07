@@ -2,6 +2,9 @@ package com.turtlebody.tbanimation.ui.components.anim2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 import com.turtlebody.tbanimation.R;
 import com.turtlebody.tbanimation.ui.components.anim1.CustomView;
@@ -15,7 +18,6 @@ public class Anim2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anim2);
-
 
     }
 

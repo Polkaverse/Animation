@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.widget.RelativeLayout;
 import com.turtlebody.tbanimation.R;
 
+import java.text.BreakIterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Anim1Activity extends AppCompatActivity {
-    private int i = 1;
+    private int i = 14 , j=1, k=1;
     CustomView customView;
+    public int baseRadius=20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,26 +24,38 @@ public class Anim1Activity extends AppCompatActivity {
         relativeLayout.addView(customView);
         startViewAnimation();
     }
-
     private void startViewAnimation() {
 
         final Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                if (i < 20) {
+                if (i < 20 && j==1 && k <33) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            int baseRadius=20;
                             customView.updateView(15*i+baseRadius);
                             i++;
+                            k++;
                         }
                     });
-                } else {
-                    i = 0;
                 }
+                else if(i>13 ||j==2 ){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            customView.updateView(15*i+baseRadius);
+                            i--;
+                            j=2;
+                            if(i==13){
+                                j=1;
+                                k++;
+                            }
+                        }
+                    });
+                }
+
             }
-        }, 0, 1000);
+        }, 0, 80);
     }
 }
