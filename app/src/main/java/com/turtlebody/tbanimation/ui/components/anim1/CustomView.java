@@ -7,21 +7,25 @@ import android.graphics.Paint;
 import android.view.View;
 
 public class CustomView extends View {
-    private Paint paint;
+    Paint paint;
+    int radius = 0;
 
     public CustomView(Context context) {
-
         super(context);
         paint = new Paint();
         paint.setColor(Color.RED);
 
     }
 
+    public void updateView(int radius) {
+        this.radius = radius;
+        invalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
-        int x = getWidth();
-        int y = getHeight();
-        canvas.drawColor(Color.WHITE);
-        canvas.drawCircle(x/2, y/2, 200, paint);
+        super.onDraw(canvas);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, paint);
     }
+
 }

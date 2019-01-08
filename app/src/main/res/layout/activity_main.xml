@@ -21,6 +21,15 @@
             android:text="Anim 1" />
 
     </LinearLayout>
+    <Button
+            android:text="ANIM 2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/test_btn_anim_circle2"/>
+    <Button
+            android:text="ANIM 3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/button2"/>
 
 
 </LinearLayout>
