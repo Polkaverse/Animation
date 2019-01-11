@@ -22,40 +22,7 @@ public class Anim1Activity extends AppCompatActivity {
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.mylayout);
         customView = new CustomView(this);
         relativeLayout.addView(customView);
-        startViewAnimation();
+        customView.startAnimate();
     }
-    private void startViewAnimation() {
 
-        final Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                if (i < 20 && j==1 && k <33) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            customView.updateView(15*i+baseRadius);
-                            i++;
-                            k++;
-                        }
-                    });
-                }
-                else if(i>13 ||j==2 ){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            customView.updateView(15*i+baseRadius);
-                            i--;
-                            j=2;
-                            if(i==13){
-                                j=1;
-                                k++;
-                            }
-                        }
-                    });
-                }
-
-            }
-        }, 0, 80);
-    }
 }
