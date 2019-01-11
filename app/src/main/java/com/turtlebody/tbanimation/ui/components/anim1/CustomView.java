@@ -41,28 +41,15 @@ public class CustomView extends View {
     }
 
 
-    public void startAnimate(){
-        ObjectAnimator first=ObjectAnimator.ofFloat(this,"circleRadius",min,max);
+    public void startAnimate() {
+        ObjectAnimator first = ObjectAnimator.ofFloat(this, "circleRadius", min, max);
         first.setDuration(1000);
+        first.setRepeatCount(ObjectAnimator.INFINITE);
+        first.setRepeatMode(ObjectAnimator.REVERSE);
         first.start();
 
-        ObjectAnimator second=ObjectAnimator.ofFloat(this,"circleRadius",max,min);
-        second.setDuration(1000);
-        second.start();
 
-        AnimatorSet bouncer = new AnimatorSet();
-        bouncer.play(first).after(second);
-
-        AnimatorSet bouncer1 = new AnimatorSet();
-        bouncer1.play(first).after(second);
-
-        AnimatorSet bouncer2 = new AnimatorSet();
-        bouncer2.play(bouncer).after(bouncer1);
-
-        AnimatorSet bouncer3 = new AnimatorSet();
-        bouncer3.play(bouncer).after(bouncer2);
-        bouncer3.start();
-        }
+    }
 
     float getCircleRadius(){
       return 0f;
