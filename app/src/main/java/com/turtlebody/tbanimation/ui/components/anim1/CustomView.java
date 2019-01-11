@@ -1,18 +1,11 @@
 package com.turtlebody.tbanimation.ui.components.anim1;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
-import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static android.widget.Toast.LENGTH_LONG;
 
 
 public class CustomView extends View {
@@ -44,24 +37,30 @@ public class CustomView extends View {
     public void startAnimate(){
         ObjectAnimator first=ObjectAnimator.ofFloat(this,"circleRadius",min,max);
         first.setDuration(1000);
+        first.setRepeatMode(ObjectAnimator.REVERSE);
+        first.setRepeatCount(ObjectAnimator.INFINITE);
         first.start();
 
-        ObjectAnimator second=ObjectAnimator.ofFloat(this,"circleRadius",max,min);
-        second.setDuration(1000);
-        second.start();
+        //first.start();
 
-        AnimatorSet bouncer = new AnimatorSet();
-        bouncer.play(first).after(second);
+//        ObjectAnimator second=ObjectAnimator.ofFloat(this,"circleRadius",max,min);
+//        second.setDuration(1000);
+//        //second.start();
 
-        AnimatorSet bouncer1 = new AnimatorSet();
-        bouncer1.play(first).after(second);
+//        AnimatorSet bouncer = new AnimatorSet();
+//        bouncer.play(first).after(second);
+//
+//        AnimatorSet bouncer1 = new AnimatorSet();
+//        bouncer1.play(first).after(second);
+//
+//        AnimatorSet bouncer2 = new AnimatorSet();
+//        bouncer2.play(bouncer).after(bouncer1);
+//
+//        AnimatorSet bouncer3 = new AnimatorSet();
+//        bouncer3.play(bouncer).after(bouncer2);
+//        bouncer3.start();
 
-        AnimatorSet bouncer2 = new AnimatorSet();
-        bouncer2.play(bouncer).after(bouncer1);
 
-        AnimatorSet bouncer3 = new AnimatorSet();
-        bouncer3.play(bouncer).after(bouncer2);
-        bouncer3.start();
         }
 
     float getCircleRadius(){
