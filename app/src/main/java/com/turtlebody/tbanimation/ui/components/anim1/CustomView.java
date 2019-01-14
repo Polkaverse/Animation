@@ -10,11 +10,12 @@ import android.view.View;
 
 public class CustomView extends View {
 
-    CustomView customView;
-    public int baseRadius=20;
+    //these are static
+    final static float min=100f , max=200f;
+
     Paint paint;
     int radius = 0;
-    float min=100f , max=200f;
+
 
     public CustomView(Context context) {
         super(context);
@@ -40,8 +41,6 @@ public class CustomView extends View {
         first.setRepeatCount(ObjectAnimator.INFINITE);
         first.setRepeatMode(ObjectAnimator.REVERSE);
         first.start();
-
-
     }
 
     float getCircleRadius(){
