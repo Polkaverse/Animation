@@ -16,9 +16,9 @@ import android.graphics.Rect;
 public class CustomView2 extends View{
     private Rect rectangle;
     private Paint paint;
-    int x = 200;
-    int y = 200;
-    int sideLength = 350   , p  ;
+    int DistanceFromLeft = 200;
+    int DistanceFromTop = 200;
+    int sideLength = 350   , p  ;     // p is the Flag Variable
     final static float Sidemin=350f , Sidemax=410f;
 
     // Variable for Circle
@@ -61,7 +61,6 @@ public class CustomView2 extends View{
         super.onDraw(canvas);
 
         // Draw the Rectangle
-        rectangle = new Rect(x, y, sideLength, sideLength);
         canvas.drawRect(rectangle, paint);
 
         //Draw the Circle
@@ -117,8 +116,9 @@ public class CustomView2 extends View{
     public void updateSquareView(int side) {
         p=side - sideLength ;
         this.sideLength =side ;
-        this.x =x-p;
-        this.y =y-p ;
+        this.DistanceFromLeft =DistanceFromLeft-p;
+        this.DistanceFromTop =DistanceFromTop-p ;
+        rectangle = new Rect(DistanceFromLeft, DistanceFromTop, sideLength, sideLength);
         invalidate();
     }
 
