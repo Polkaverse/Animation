@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/mylayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.components.anim2.Anim2Activity">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mylayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.components.anim2.Anim2Activity">
+
+    <com.turtlebody.tbanimation.ui.components.anim2.CustomView2
+        android:id="@+id/id_customView2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
 
 
-</RelativeLayout>
+</LinearLayout>
