@@ -1,6 +1,5 @@
 package com.turtlebody.tbanimation.ui.components.anim1;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -11,12 +10,6 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static android.widget.Toast.LENGTH_LONG;
 
 
 public class CustomView extends View {
@@ -74,8 +67,6 @@ public class CustomView extends View {
         first.setRepeatCount(ObjectAnimator.INFINITE);
         first.setRepeatMode(ObjectAnimator.REVERSE);
         first.start();
-
-
     }
 
     float getCircleRadius(){

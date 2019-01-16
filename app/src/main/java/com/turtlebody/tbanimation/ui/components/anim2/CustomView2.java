@@ -14,17 +14,20 @@ import android.view.View;
 import android.graphics.Rect;
 
 public class CustomView2 extends View{
-    private Rect rectangle;
-    private Paint paint;
-    int DistanceFromLeft = 200;
-    int DistanceFromTop = 200;
-    int sideLength = 350   , p  ;     // p is the Flag Variable
-    final static float Sidemin=350f , Sidemax=410f;
+    //alwasy start variable with small letter
+    //alwasy use m for global variable
+    //ALL STATIC variable must be in capital later with underscore to separate 2 words
 
-    // Variable for Circle
+    private Paint mPaint;
+    //Rectangle
+    private Rect mRect;
 
-    int Circle_X_Axis = 0, Circle_Y_Axis = 0  , x_axis=0;
-    final static float Circle_X_Axis1=600f , Circle_X_Axis2=800f;
+    int mRectSize = 350 , p  ;     // p is the Flag Variable
+    final static float RECT_MIN_SIDE =350f , RECT_MAX_SIZE =410f;
+
+    //Circle
+    int mCircleX = 0, mCircleY = 0;
+    final static float CIRCLE_MIN_X =600f , CIRCLE_MAX_X =800f, CIRCLE_RADIUS = 140;
 
     public CustomView2(Context context) {
         super(context);
@@ -50,10 +53,18 @@ public class CustomView2 extends View{
 
 
     private void init(@Nullable AttributeSet attrs) {
-        paint = new Paint();
-        paint.setColor(Color.RED);
-        Circle_X_Axis = 600;
-        Circle_Y_Axis = 280;
+        mPaint = new Paint();
+        mPaint.setColor(Color.RED);
+        mCircleX = 600;
+        mCircleY = 280;
+
+        //initialization must be done only once
+        mRect = new Rect();
+
+        mRect.left = 200;
+        mRect.top = 200;
+        mRect.right = mRectSize;
+        mRect.bottom = mRectSize;
     }
 
     @Override
@@ -61,27 +72,23 @@ public class CustomView2 extends View{
         super.onDraw(canvas);
 
         // Draw the Rectangle
-        canvas.drawRect(rectangle, paint);
-
-        //Draw the Circle
-        canvas.drawCircle(Circle_X_Axis, Circle_Y_Axis, 140, paint);
-
+        canvas.drawRect(mRect, mPaint);
+        canvas.drawCircle(mCircleX, mCircleY, CIRCLE_RADIUS, mPaint);
     }
 
-        // Animate Function
-
+    // Animate Function
     public void startAnimate() {
-                          // Used ObjectAnimator for Square
-        ObjectAnimator first = ObjectAnimator.ofFloat(this, "squareSide", Sidemin, Sidemax);
+        // Used ObjectAnimator for Square
+        ObjectAnimator first = ObjectAnimator.ofFloat(this, "squareSide", RECT_MIN_SIDE, RECT_MAX_SIZE);
         first.setRepeatCount(ObjectAnimator.INFINITE);
         first.setRepeatMode(ObjectAnimator.REVERSE);
 
-                        // Used ObjectAnimator for Circle
-        ObjectAnimator second = ObjectAnimator.ofFloat(this, "circleX", Circle_X_Axis1, Circle_X_Axis2);
+        // Used ObjectAnimator for Circle
+        ObjectAnimator second = ObjectAnimator.ofFloat(this, "circleX", CIRCLE_MIN_X, CIRCLE_MAX_X);
         second.setRepeatCount(ObjectAnimator.INFINITE);
         second.setRepeatMode(ObjectAnimator.REVERSE);
 
-                        // Animator set to animate two object parallely
+        // Animator set to animate two object parallely
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(first,second);
         animatorSet.setDuration(1500);
@@ -90,7 +97,6 @@ public class CustomView2 extends View{
     }
 
     //Circle Getter, Setter and Update Function
-
     float getCircleX(){
         return 0f;
     }
@@ -99,12 +105,11 @@ public class CustomView2 extends View{
         updateCircleView(Math.round(a));
     }
     public void updateCircleView(int side) {
-        Circle_X_Axis = side;
+        mCircleX = side;
         invalidate();
     }
 
     //Square Getter, Setter and Update Function
-
     float getSquareSide(){
         return 0f;
     }
@@ -114,11 +119,12 @@ public class CustomView2 extends View{
     }
 
     public void updateSquareView(int side) {
-        p=side - sideLength;
-        this.sideLength =side ;
-        this.DistanceFromLeft =DistanceFromLeft-p;
-        this.DistanceFromTop =DistanceFromTop-p ;
-        rectangle = new Rect(DistanceFromLeft, DistanceFromTop, sideLength, sideLength);
+        p=side - mRectSize;
+        mRectSize =side ;
+        mRect.left = mRect.left -p;
+        mRect.top = mRect.top -p ;
+        mRect.right = mRectSize;
+        mRect.bottom = mRectSize;
         invalidate();
     }
 
