@@ -22,7 +22,6 @@ public class CustomView2 extends View{
     final static float Sidemin=350f , Sidemax=410f;
 
     // Variable for Circle
-
     int Circle_X_Axis = 0, Circle_Y_Axis = 0  , x_axis=0;
     final static float Circle_X_Axis1=600f , Circle_X_Axis2=800f;
 
@@ -69,20 +68,19 @@ public class CustomView2 extends View{
 
     }
 
-        // Animate Function
-
+    // Animate Function
     public void startAnimate() {
-                          // Used ObjectAnimator for Square
+        // Used ObjectAnimator for Square
         ObjectAnimator first = ObjectAnimator.ofFloat(this, "squareSide", Sidemin, Sidemax);
         first.setRepeatCount(ObjectAnimator.INFINITE);
         first.setRepeatMode(ObjectAnimator.REVERSE);
 
-                        // Used ObjectAnimator for Circle
+        // Used ObjectAnimator for Circle
         ObjectAnimator second = ObjectAnimator.ofFloat(this, "circleX", Circle_X_Axis1, Circle_X_Axis2);
         second.setRepeatCount(ObjectAnimator.INFINITE);
         second.setRepeatMode(ObjectAnimator.REVERSE);
 
-                        // Animator set to animate two object parallely
+        // Animator set to animate two object parallely
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(first,second);
         animatorSet.setDuration(1500);
@@ -91,7 +89,6 @@ public class CustomView2 extends View{
     }
 
     //Circle Getter, Setter and Update Function
-
     float getCircleX(){
         return 0f;
     }
@@ -105,7 +102,6 @@ public class CustomView2 extends View{
     }
 
     //Square Getter, Setter and Update Function
-
     float getSquareSide(){
         return 0f;
     }
