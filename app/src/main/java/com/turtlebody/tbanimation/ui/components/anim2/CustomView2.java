@@ -114,7 +114,7 @@ public class CustomView2 extends View{
     }
 
     public void updateSquareView(int side) {
-        p=side - sideLength ;
+        p=side - sideLength;
         this.sideLength =side ;
         this.DistanceFromLeft =DistanceFromLeft-p;
         this.DistanceFromTop =DistanceFromTop-p ;
