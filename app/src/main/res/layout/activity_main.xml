@@ -28,10 +28,16 @@
         android:text="ANIM 2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/test_btn_anim_circle3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ANIM 3" />
+
+    <Button
+        android:id="@+id/test_btn_anim_circle4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anim4" />
 
 
 </LinearLayout>
