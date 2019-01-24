@@ -18,7 +18,7 @@ import android.view.View;
 public class CustomView3 extends View {
 
     private Paint mPaint;
-    int mCircleX = 0, mCircleY = 0 , CIRCLE_RADIUS = 70 , CIRCLE2_RADIUS = 60 , mCircleX2 = 215;
+    int mCircleX = 0, mCircleY = 0 , CIRCLE_RADIUS = 70 , CIRCLE2_RADIUS = 60 , CIRCLE3_RADIUS = 60, mCircleX2 = 215 ,mCircleX3 = 215;
     final static float CIRCLE_MIN_R =70f , CIRCLE_MAX_R =110f , CIRCLE2_MIN_X =215f , CIRCLE2_MAX_X =1000f;
 
     public CustomView3(Context context) {
@@ -56,6 +56,8 @@ public class CustomView3 extends View {
 
         canvas.drawCircle(mCircleX2, mCircleY, CIRCLE2_RADIUS, mPaint);
 
+        canvas.drawCircle(mCircleX3, mCircleY, CIRCLE3_RADIUS, mPaint);
+
     }
 
     // Animate Function
@@ -71,10 +73,39 @@ public class CustomView3 extends View {
         Animat2.setRepeatMode(ObjectAnimator.RESTART);
         Animat2.setDuration(4000);
 
+        ObjectAnimator Animat3 = ObjectAnimator.ofFloat(this, "viewAnimationCircle2", CIRCLE2_MIN_X, CIRCLE2_MAX_X);
+        Animat3.setRepeatCount(ObjectAnimator.INFINITE);
+        Animat3.setRepeatMode(ObjectAnimator.RESTART);
+        Animat3.setDuration(4000);
+
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.play(Animat3).after(2000);
+
         AnimatorSet animatorSet2 = new AnimatorSet();
-        animatorSet2.playTogether(Animat1, Animat2);
+        animatorSet2.playTogether(Animat1, Animat2,animatorSet);
         animatorSet2.start();
 
+    }
+
+    float getViewAnimationCircle2(){
+        return 0f;
+    }
+
+    void setViewAnimationCircle2(float a )
+    {
+        updateAnimationCircleView2(Math.round(a));
+    }
+
+    private void updateAnimationCircleView2(int xaxis) {
+        if(xaxis==230){
+            CIRCLE3_RADIUS=60;
+        }
+        mCircleX3 = xaxis;
+        if (mCircleX3>930){
+            CIRCLE3_RADIUS=CIRCLE3_RADIUS-1;
+        }
+        invalidate();
     }
 
 
@@ -92,7 +123,7 @@ public class CustomView3 extends View {
             CIRCLE2_RADIUS=60;
         }
         mCircleX2 = xaxis;
-        if (mCircleX2>950){
+        if (mCircleX2>930){
             CIRCLE2_RADIUS=CIRCLE2_RADIUS-1;
         }
         invalidate();
