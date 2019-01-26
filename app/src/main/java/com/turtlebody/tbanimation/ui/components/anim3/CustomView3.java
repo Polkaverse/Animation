@@ -18,7 +18,7 @@ import android.view.View;
 public class CustomView3 extends View {
 
     private Paint mPaint;
-    int mCircleX = 0, mCircleY = 0 , CIRCLE_RADIUS = 70 , CIRCLE2_RADIUS = 60 , CIRCLE3_RADIUS = 60, mCircleX2 = 215 ,mCircleX3 = 215;
+    int mCircleX = 0, mCircleY = 0 , CIRCLE_RADIUS = 70 , CIRCLE2_RADIUS = 60 , mCircleX2 = 215, CIRCLE3_RADIUS = 60 ,mCircleX3 = 215 , CIRCLE4_RADIUS = 60 ,mCircleX4 = 215 , CIRCLE5_RADIUS = 60 ,mCircleX5 = 215 ;
     final static float CIRCLE_MIN_R =70f , CIRCLE_MAX_R =110f , CIRCLE2_MIN_X =215f , CIRCLE2_MAX_X =1000f;
 
     public CustomView3(Context context) {
@@ -58,6 +58,10 @@ public class CustomView3 extends View {
 
         canvas.drawCircle(mCircleX3, mCircleY, CIRCLE3_RADIUS, mPaint);
 
+        canvas.drawCircle(mCircleX4, mCircleY, CIRCLE4_RADIUS, mPaint);
+
+        canvas.drawCircle(mCircleX5, mCircleY, CIRCLE5_RADIUS, mPaint);
+
     }
 
     // Animate Function
@@ -78,15 +82,72 @@ public class CustomView3 extends View {
         Animat3.setRepeatMode(ObjectAnimator.RESTART);
         Animat3.setDuration(4000);
 
+        ObjectAnimator Animat4 = ObjectAnimator.ofFloat(this, "viewAnimationCircle3", CIRCLE2_MIN_X, CIRCLE2_MAX_X);
+        Animat4.setRepeatCount(ObjectAnimator.INFINITE);
+        Animat4.setRepeatMode(ObjectAnimator.RESTART);
+        Animat4.setDuration(4000);
+
+        ObjectAnimator Animat5 = ObjectAnimator.ofFloat(this, "viewAnimationCircle4", CIRCLE2_MIN_X, CIRCLE2_MAX_X);
+        Animat5.setRepeatCount(ObjectAnimator.INFINITE);
+        Animat5.setRepeatMode(ObjectAnimator.RESTART);
+        Animat5.setDuration(4000);
+
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(Animat3).after(2000);
 
         AnimatorSet animatorSet2 = new AnimatorSet();
-        animatorSet2.playTogether(Animat1, Animat2,animatorSet);
-        animatorSet2.start();
+        animatorSet2.play(Animat4).after(1000);
+
+        AnimatorSet animatorSet3 = new AnimatorSet();
+        animatorSet3.play(Animat5).after(3000);
+
+        AnimatorSet animatorSet4 = new AnimatorSet();
+        animatorSet4.playTogether(Animat1, Animat2, animatorSet, animatorSet2 , animatorSet3);
+        animatorSet4.start();
 
     }
+
+    float getViewAnimationCircle4(){
+        return 0f;
+    }
+
+    void setViewAnimationCircle4(float a )
+    {
+        updateAnimationCircleView4(Math.round(a));
+    }
+
+    private void updateAnimationCircleView4(int xaxis) {
+        if(xaxis==230){
+            CIRCLE5_RADIUS=60;
+        }
+        mCircleX5 = xaxis;
+        if (mCircleX5>930){
+            CIRCLE5_RADIUS=CIRCLE5_RADIUS-1;
+        }
+        invalidate();
+    }
+
+    float getViewAnimationCircle3(){
+        return 0f;
+    }
+
+    void setViewAnimationCircle3(float a )
+    {
+        updateAnimationCircleView3(Math.round(a));
+    }
+
+    private void updateAnimationCircleView3(int xaxis) {
+        if(xaxis==230){
+            CIRCLE4_RADIUS=60;
+        }
+        mCircleX4 = xaxis;
+        if (mCircleX4>930){
+            CIRCLE4_RADIUS=CIRCLE4_RADIUS-1;
+        }
+        invalidate();
+    }
+
 
     float getViewAnimationCircle2(){
         return 0f;
