@@ -122,7 +122,7 @@ public class CustomView3 extends View {
             CIRCLE5_RADIUS=60;
         }
         mCircleX5 = xaxis;
-        if (mCircleX5>930){
+        if (mCircleX5>921){
             CIRCLE5_RADIUS=CIRCLE5_RADIUS-1;
         }
         invalidate();
@@ -142,7 +142,7 @@ public class CustomView3 extends View {
             CIRCLE4_RADIUS=60;
         }
         mCircleX4 = xaxis;
-        if (mCircleX4>930){
+        if (mCircleX4>921){
             CIRCLE4_RADIUS=CIRCLE4_RADIUS-1;
         }
         invalidate();
@@ -163,7 +163,7 @@ public class CustomView3 extends View {
             CIRCLE3_RADIUS=60;
         }
         mCircleX3 = xaxis;
-        if (mCircleX3>930){
+        if (mCircleX3>921){
             CIRCLE3_RADIUS=CIRCLE3_RADIUS-1;
         }
         invalidate();
@@ -184,7 +184,7 @@ public class CustomView3 extends View {
             CIRCLE2_RADIUS=60;
         }
         mCircleX2 = xaxis;
-        if (mCircleX2>930){
+        if (mCircleX2>921){
             CIRCLE2_RADIUS=CIRCLE2_RADIUS-1;
         }
         invalidate();
